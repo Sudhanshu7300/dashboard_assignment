@@ -17,27 +17,30 @@ import { FaBell } from "react-icons/fa";
 // ** Third Party Components
 import notificationImg from "components/assets/images/notification.gif";
 
-const renewalNotification = [
+const orderNotification = [
   {
     _id: "1",
-    courseName: "Course One",
-    coursePicture: "https://via.placeholder.com/40",
-    courseUi: "Course UI 1",
-    date: new Date().toISOString(),
+    orderNumber: "ORD123456",
+    productName: "Product One",
+    productImage: "https://via.placeholder.com/40",
+    productCategory: "Category 1",
+    orderDate: new Date().toISOString(),
   },
   {
     _id: "2",
-    courseName: "Course Two",
-    coursePicture: "https://via.placeholder.com/40",
-    courseUi: "Course UI 2",
-    date: new Date().toISOString(),
+    orderNumber: "ORD123457",
+    productName: "Product Two",
+    productImage: "https://via.placeholder.com/40",
+    productCategory: "Category 2",
+    orderDate: new Date().toISOString(),
   },
   {
     _id: "3",
-    courseName: "Course Three",
-    coursePicture: "https://via.placeholder.com/40",
-    courseUi: "Course UI 3",
-    date: new Date().toISOString(),
+    orderNumber: "ORD123458",
+    productName: "Product Three",
+    productImage: "https://via.placeholder.com/40",
+    productCategory: "Category 3",
+    orderDate: new Date().toISOString(),
   },
 ];
 
@@ -55,7 +58,6 @@ const Menu = styled(MuiMenu)<MenuProps>(({ theme }) => ({
   },
 }));
 
-// ** Styled MenuItem component
 const MenuItem = styled(MuiMenuItem)<MenuItemProps>(({ theme }) => ({
   paddingTop: theme.spacing(3),
   paddingBottom: theme.spacing(3),
@@ -69,14 +71,12 @@ const styles = {
   },
 };
 
-// ** Styled Avatar component
 const Avatar = styled(MuiAvatar)<AvatarProps>({
   width: "2.375rem",
   height: "2.375rem",
   fontSize: "1.125rem",
 });
 
-// ** Styled component for the title in MenuItems
 const MenuItemTitle = styled(Typography)<TypographyProps>(({ theme }) => ({
   fontWeight: 600,
   flex: "1 1 100%",
@@ -157,9 +157,9 @@ const NotificationDropdown = () => {
             overflowX: "hidden",
           }}
         >
-          {renewalNotification?.length > 0 ? (
+          {orderNotification?.length > 0 ? (
             <>
-              {renewalNotification?.slice(0, 9)?.map((item: any, i: number) => {
+              {orderNotification?.slice(0, 9)?.map((item: any, i: number) => {
                 const started = item?.date;
                 const startedDate = dayjs(started).format("DD-MM-YYYY");
                 return (
@@ -172,8 +172,8 @@ const NotificationDropdown = () => {
                       }}
                     >
                       <Avatar
-                        alt={item?.courseName?.charAt(0)}
-                        src={item?.coursePicture ?? item?.courseName?.charAt(0)}
+                        alt={item?.productName?.charAt(0)}
+                        src={item?.productImage ?? item?.productName?.charAt(0)}
                       />
                       <Box
                         sx={{
@@ -184,9 +184,9 @@ const NotificationDropdown = () => {
                           flexDirection: "column",
                         }}
                       >
-                        <MenuItemTitle>{item?.courseUi}🎉</MenuItemTitle>
+                        <MenuItemTitle>{item?.orderNumber}🎉</MenuItemTitle>
                         <MenuItemSubtitle variant="body2">
-                          {item?.courseName}
+                          {item?.productName}
                         </MenuItemSubtitle>
                       </Box>
                       <Typography
